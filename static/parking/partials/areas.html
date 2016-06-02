@@ -1,0 +1,28 @@
+<style type="text/css">
+	tr{
+		cursor: pointer;
+	}
+</style>
+<div class="page-header">
+  <h1>Parking <small>Areas</small></h1>
+</div>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th> # </th>
+			<th> Name </th>
+			<th> Latitude </th>
+			<th> Longitude </th>
+			<th> Capacity </th>
+			<th> Filled </th>
+		</tr>
+	</thead>
+	<tr ng-repeat="area in vm.areas" ng-click="vm.area(area.id)">
+		<td> {{ area.id }} </td>
+		<td> {{ area.name }} </td>
+		<td> {{ area.latitude }} </td>
+		<td> {{ area.longitude }} </td>
+		<td> {{ area.capacity }} </td>
+		<td> {{ area.filled }} </td>
+	</tr>
+</table>

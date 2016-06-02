@@ -7,11 +7,11 @@
 		.config(config);
 
 	angular
-        .module('parking.controllers', []);
-    angular
-        .module('parking.services', []);
+		.module('parking.controllers', []);
+  angular
+		.module('parking.services', []);
 
-    config.$inject = ["$routeProvider", "$locationProvider"];
+	config.$inject = ["$routeProvider", "$locationProvider"];
 
 	function config($routeProvider, $locationProvider) {
 		
@@ -19,6 +19,16 @@
 			when('/qr/', {
 				templateUrl: '/static/parking/partials/qr.html',
 				controller: 'qrController',
+				controllerAs: 'vm'
+			}).
+			when('/areas/', {
+				templateUrl: '/static/parking/partials/areas.html',
+				controller: 'areasController',
+				controllerAs: 'vm'
+			}).
+			when('/area/:id', {
+				templateUrl: '/static/parking/partials/area.html',
+				controller: 'areaController',
 				controllerAs: 'vm'
 			}).
 			otherwise({

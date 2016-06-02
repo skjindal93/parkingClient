@@ -11,6 +11,9 @@
 
         var parkingService = {
             registerQr: registerQr,
+            parkingAreas: parkingAreas,
+            parkingSensors: parkingSensors,
+            getPiStatus: getPiStatus
 
         };
         // this.getCategories = getCategories;
@@ -22,6 +25,27 @@
                 method: 'GET'
             });
         };
+
+        function parkingAreas() {
+            return $http({
+                url: api+'parking/parkingAreas/',
+                method: 'GET'
+            });
+        }
+
+        function parkingSensors(id) {
+            return $http({
+                url: api+'parking/areaSensors/?area='+id,
+                method: 'GET'
+            });
+        }
+
+        function getPiStatus(pi) {
+            return $http({
+                url: api+'parking/checkStatus/?pi='+pi,
+                method: 'GET'
+            });
+        }
     }
 	
 })();

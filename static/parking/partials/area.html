@@ -1,0 +1,56 @@
+<div class="page-header">
+  <h1>Sensors <small></small></h1>
+</div>
+<div ng-repeat="pi in vm.sensors">
+	<div class="row">
+		<div class="col-md-2">
+			<p style="font-size:21px;"> Raspberry: {{pi.pi.raspberry_id}}</p>
+		</div>
+		<div class="col-md-2">
+			<button type="button" class="btn btn-default" ng-click="vm.checkPiStatus(pi.pi)">Status</button>
+			<span ng-show = "pi.pi.status == true" style="color:#3c763d;"><strong>Online</strong></span>
+			<span ng-show = "pi.pi.status == false" style="color:#a94442;"><strong>Offline</strong></span>
+		</div>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th> # </th>
+				<th> Latitude </th>
+				<th> Longitude </th>
+				<th> Pi Port </th>
+				<th> Created </th>
+				<th> Modified </th>
+			</tr>
+		</thead>
+		
+		<tbody ng-repeat="sensor in pi.pi.sensors">
+			<tr ng-show="sensor.occupied" class="danger">
+				<td> {{ sensor.sensor_id }} </td>
+				<td> {{ sensor.latitude }} </td>
+				<td> {{ sensor.longitude }} </td>
+				<td> {{ sensor.pi_port }} </td>
+				<td> {{ sensor.created }} </td>
+				<td> {{ sensor.modified }} </td>
+			</tr>
+
+			<tr ng-show="!sensor.occupied" class="primary">
+				<td> {{ sensor.sensor_id }} </td>
+				<td> {{ sensor.latitude }} </td>
+				<td> {{ sensor.longitude }} </td>
+				<td> {{ sensor.pi_port }} </td>
+				<td> {{ sensor.created }} </td>
+				<td> {{ sensor.modified }} </td>
+			</tr>
+		</tbody>
+
+	</table>
+	<div>
+		<b><u>Empty Ports:</u></b>
+		<i ng-repeat="port in pi.empty_ports">
+			{{ port }}
+		</i>
+	</div>
+	<hr>
+	
+</div>

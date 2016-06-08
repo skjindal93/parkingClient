@@ -50,6 +50,7 @@
         var vm = this;
         vm.id = $routeParams.id;
         vm.checkPiStatus = checkPiStatus;
+        vm.deletePi = deletePi;
 
         launch();
 
@@ -84,6 +85,13 @@
                     pi.status = true;
                 else
                     pi.status = false;
+            });
+        }
+
+        function deletePi(pi, index){
+            var id = pi.raspberry_id;
+            parkingService.deleteRaspberry(id).then(function(results){
+                vm.sensors.splice(index,1);
             });
         }
 

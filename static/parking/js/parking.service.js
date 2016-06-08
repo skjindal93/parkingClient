@@ -13,7 +13,8 @@
             registerQr: registerQr,
             parkingAreas: parkingAreas,
             parkingSensors: parkingSensors,
-            getPiStatus: getPiStatus
+            getPiStatus: getPiStatus,
+            deleteRaspberry: deleteRaspberry
 
         };
         // this.getCategories = getCategories;
@@ -44,6 +45,14 @@
             return $http({
                 url: api+'parking/checkStatus/?pi='+pi,
                 method: 'GET'
+            });
+        }
+
+        function deleteRaspberry(pi){
+
+            return $http({
+                url: api+'parking/deleteRaspberry/'+pi+'/',
+                method: 'DELETE'
             });
         }
     }

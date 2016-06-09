@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('parking', ['ngRoute','constants','ngCookies','ngStorage',
+		.module('parking', ['ngRoute','constants','ngCookies','ngStorage','angular-uuid','monospaced.qrcode',
 											'parking.services','parking.controllers'])
 		.config(config);
 
@@ -19,6 +19,11 @@
 			when('/qr/', {
 				templateUrl: '/static/parking/partials/qr.html',
 				controller: 'qrController',
+				controllerAs: 'vm'
+			}).
+			when('/sensorQR/', {
+				templateUrl: '/static/parking/partials/sensorQR.html',
+				controller: 'sensorQRController',
 				controllerAs: 'vm'
 			}).
 			when('/areas/', {

@@ -1,0 +1,7 @@
+<div class="page-header">
+	<h1>QRs <small>Sensor</small></h1>
+</div>
+
+<div class="btn btn-primary" ng-click="vm.register()">Generate QR</div>
+
+<qrcode ng-show="vm.sensorQR.length" version="2" error-correction-level="M" size="200" data="{{vm.sensorQR}}"></qrcode>

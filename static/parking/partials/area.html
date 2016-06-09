@@ -30,10 +30,12 @@
 				<th> Pi Port </th>
 				<th> Created </th>
 				<th> Modified </th>
+				<th></th>
 			</tr>
 		</thead>
 		
-		<tbody ng-repeat="sensor in pi.pi.sensors">
+		<tbody ng-repeat="sensor in pi.pi.sensors track by $index">
+			
 			<tr ng-show="sensor.occupied" class="danger">
 				<td> {{ sensor.sensor_id }} </td>
 				<td> {{ sensor.latitude }} </td>
@@ -41,6 +43,9 @@
 				<td> {{ sensor.pi_port }} </td>
 				<td> {{ sensor.created }} </td>
 				<td> {{ sensor.modified }} </td>
+				<td> 
+					<span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="vm.deleteSensor(sensor.sensor_id, $index, $parent.$index)" style="cursor: pointer;"></span> 
+				</td>
 			</tr>
 
 			<tr ng-show="!sensor.occupied" class="primary">
@@ -50,7 +55,11 @@
 				<td> {{ sensor.pi_port }} </td>
 				<td> {{ sensor.created }} </td>
 				<td> {{ sensor.modified }} </td>
+				<td> 
+					<span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="vm.deleteSensor(sensor.sensor_id, $index, $parent.$index)" style="cursor: pointer;"></span> 
+				</td>
 			</tr>
+
 		</tbody>
 
 	</table>

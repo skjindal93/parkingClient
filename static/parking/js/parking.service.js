@@ -14,7 +14,8 @@
             parkingAreas: parkingAreas,
             parkingSensors: parkingSensors,
             getPiStatus: getPiStatus,
-            deleteRaspberry: deleteRaspberry
+            deleteRaspberry: deleteRaspberry,
+            deleteSensor: deleteSensor
 
         };
         // this.getCategories = getCategories;
@@ -52,6 +53,14 @@
 
             return $http({
                 url: api+'parking/deleteRaspberry/'+pi+'/',
+                method: 'DELETE'
+            });
+        }
+
+        function deleteSensor(sensor){
+
+            return $http({
+                url: api+'parking/deleteSensor/'+sensor+'/',
                 method: 'DELETE'
             });
         }

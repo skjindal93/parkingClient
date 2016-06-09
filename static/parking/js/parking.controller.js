@@ -4,6 +4,7 @@
     angular
         .module('parking.controllers')
         .controller('qrController', qrController)
+        .controller('sensorQRController', sensorQRController)
         .controller('areasController', areasController)
         .controller('areaController', areaController);
     
@@ -18,6 +19,18 @@
                 var img = results.data.svg;
                 vm.qr = api+'media/'+img;
             });
+        }
+    }
+
+    sensorQRController.$inject = ["api", "parkingService", "uuid"];
+
+    function sensorQRController(api, parkingService, uuid){
+        var vm = this;
+        vm.register = register;
+
+        function register(){
+            var unique = uuid.v4();
+            vm.sensorQR = unique;
         }
     }
 
@@ -51,6 +64,7 @@
         vm.id = $routeParams.id;
         vm.checkPiStatus = checkPiStatus;
         vm.deletePi = deletePi;
+        vm.deleteSensor = deleteSensor;
 
         launch();
 
@@ -92,6 +106,13 @@
             var id = pi.raspberry_id;
             parkingService.deleteRaspberry(id).then(function(results){
                 vm.sensors.splice(index,1);
+            });
+        }
+
+        function deleteSensor(sensor, index, piIndex){
+            parkingService.deleteSensor(sensor).then(function(results){
+                console.log(vm.sensors[piIndex]);
+                vm.sensors[piIndex].pi.sensors.splice(index,1);
             });
         }
 
